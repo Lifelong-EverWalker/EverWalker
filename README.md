@@ -29,7 +29,7 @@
 
 ### Lifelong Learning without Forgetting
 - ✅ **Only 4.3% forgetting rate** (11% improvement over baselines)
-- ✅ **67.3% average success rate** across 15 continual tasks
+- ✅ **67.3% average success rate** across 18 continual tasks
 - ✅ **Strong zero-shot generalization** to unseen scenes
 
 ### Efficient and Scalable

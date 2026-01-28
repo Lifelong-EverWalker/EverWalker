@@ -11,7 +11,7 @@
 
 ## 📌 Overview
 
-**ProtoStream** is a novel framework for **lifelong visual-language navigation (VLN)** that enables navigation agents to continually learn new tasks without catastrophic forgetting. Our method achieves state-of-the-art performance through three key innovations:
+**EverWalker** is a novel framework for **lifelong vision-and-language navigation (LVLN)** that enables navigation agents to continually learn new tasks without catastrophic forgetting. Our method achieves state-of-the-art performance through three key innovations:
 
 <div align="center">
 <img src="assets/overview.png" width="90%">
@@ -48,6 +48,7 @@
 ### System ComponentsKey Innovations
 
 **1. Dynamic Prototype Bank**
+
 ```python
 # Soft routing over ALL prototypes (not top-k)
 similarities = cosine_similarity(z_t, prototypes)  # (K,)
@@ -56,6 +57,7 @@ weighted_proto = sum(weights * prototypes)         # (512,)
 ```
 
 **2. HyperNetwork Design**
+
 ```python
 # Step-level LoRA generation
 for layer_size in unique_sizes:
@@ -94,7 +96,7 @@ cd EverWalker
 
 # Create conda environment
 conda create -n protostream python=3.8
-conda activate protostream
+conda activate EverWalker
 
 # Install dependencies
 pip install -r requirements.txt
@@ -115,7 +117,7 @@ python scripts/download_dataset.py
 python scripts/preprocess_data.py
 ```
 
-#### 2. Train ProtoStream
+#### 2. Train EverWalker
 
 ```bash
 # Single GPU training (for debugging)
@@ -136,10 +138,6 @@ python streamvln_eval.py \
     --checkpoint outputs/protostream/checkpoints/task_1.pth \
     --config config/vln_r2r.yaml \
     --output_dir outputs/evaluation
-
-# Evaluate baseline (without ProtoStream)
-python streamvln_eval_baseline.py \
-    --checkpoint outputs/baseline/checkpoints/task_1.pth
 ```
 
 
@@ -148,7 +146,7 @@ python streamvln_eval_baseline.py \
 ## 📁 Project Structure
 
 ```
-ProtoStream/
+EverWalker/
 ├── config/                          # Configuration files
 │   └── vln_r2r.yaml                # StreamVLN R2R config
 │
@@ -195,7 +193,7 @@ After training completes, you should see:
 
 ```
 outputs/
-├── protostream/
+├── EverWalker/
 │   ├── checkpoints/
 │   │   ├── task_1.pth
 │   │   ├── task_2.pth
